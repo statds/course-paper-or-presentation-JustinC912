@@ -1,0 +1,79 @@
+\documentclass[12pt]{article}
+
+%% preamble: Keep it clean; only include those you need
+\usepackage{amsmath}
+\usepackage[margin = 1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{natbib}
+
+% highlighting hyper links
+\usepackage[colorlinks=true, citecolor=blue]{hyperref}
+
+
+%% meta data
+
+\title{Proposal: How does Height and Weight affect NBA Player Performance?}
+\author{Justin Chan\\
+  \date{October 9th, 2023}\\
+  University of Connecticut
+}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+In the increasingly competitive world of professional basketball, players are doing everything they can to 
+gain a competitive advantage over another. With practice, coaches, and trainers players can work hard at 
+mastering their craft but what about the more physical aspects of their game? How does a players' height
+and weight impact the performance ability of an NBA Player? Does being taller translate to scoring more 
+points per game? Does weight increase the amount of rebounds you will grab? The answer to these 
+questions offers invaluable insight to coaches, scouts, and analysts in making data-driven decisions for their 
+teams. As far as similar research, a study published in the British Journal of Sports Medicine looked at height
+as a predictor within all sports and found that height and sporting success was highly dependent on the type
+of sport \citep{tucker2012makes}. Another study done by head researcher Shaoliang Zhang looked at height and 
+weight as a single predictor along with league experience \citep{zhang2017performance}. This paper would 
+build onto that by looking at how player performance is affected by height and weight individually within the
+sport of basketball.
+
+\section{Specific Aims}
+The research question that this paper will work towards answering is, "How does Height and Weight affect
+NBA Player Performance?" In a more statistical manner, we will be answering the question of how well the 
+predictors of Height and Weight can model an NBA Players' ability to score, rebound, assist as well as a variety
+of other metrics. This question can also be used to help coaches, scouts, and team managers make more 
+informed decisions for the well-being of their team.
+
+\section{Data}
+
+The dataset that I will be using is taken from Kaggle at \href{https://www.kaggle.com/datasets/justinas/nba-players-data}{NBA Players} 
+which sourced its data from the official NBA website. The dataset contains 12.3 thousand observations with 
+22 variables taken from 1996 to 2021. It gives the per game averages of each player per season along with
+other variables including height and weight. Some of the variables include age, games  played, points per game, 
+rebounds per game, assists per game, and net rating. The data has been cleaned with no rows of missing data 
+or other data quality issues.
+
+\section{Research Design and Methods}
+
+In terms of design and methods, I will first preprocess and scan the data through creating a number of
+visualizations and other methods to ensure data quality, identify outliers within the data, and to see if any of the
+predictors need to be transformed in anyway. Next, I will fit a number of regression models with height and 
+weight as the predictors to see how the predictors correlate with points, rebounds and assists. Finally, I'll 
+use the information gathered from this to try to create the best model to predict each basketball metric using 
+either one or both of the predictors.
+
+\section{Discussion}
+
+Some of the challenges that I would expect in this task is finding the right transformations and tuning
+for each of the models in order for each them to perform to their best. Also, another difficulty could be trying to
+fit other types of models to the dataset but it is unclear if that would be appropriate. If something unexpected
+should occur, I will first look to online resources for help and try fix the issue myself otherwise, I will ask professors
+more knowledgeable in field for their help and guidance. If it is a problem with the dataset, there are other datasets
+available but I don't expect such issues. Some limitations of the work is the dataset. The current dataset only 
+contains height and weight but wingspan is also another physical attribute that could affect the a players ability to 
+grab a rebound for example. Another limitation, is the types of models being fitted for this paper. There could be 
+more sophisticated models more fit for the situation than the relatively simple ones being used.
+
+\bibliography{proposalbib}
+\bibliographystyle{plainnat}
+
+\end{document}
