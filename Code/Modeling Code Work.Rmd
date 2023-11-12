@@ -1,0 +1,87 @@
+---
+title: "Project"
+output: html_document
+---
+
+```{r}
+library(car)
+data1 <- read.csv("all_seasons.csv")
+par(mfrow = c(2,3))
+hist(data1$pts, data = data1)
+hist(data1$reb, data = data1)
+hist(data1$ast, data = data1)
+hist(data1$ts_pct, data = data1)
+hist(data1$player_height, data = data1)
+hist(data1$player_weight, data = data1)
+
+set.seed(1)
+ind <- sample(1:dim(data1)[1], dim(data1)[1] * 0.7)
+data1train <- data1[ind, ]
+data1test <- data1[-ind, ]
+
+# Points Models
+linPts <- lm(pts ~ player_height + player_weight, data = data1train)
+summary(linPts)
+
+linPts1 <- lm(pts ~ player_height, data = data1train)
+summary(linPts1)
+
+linPts2 <- lm(pts ~ player_weight, data = data1train)
+summary(linPts2)
+
+# Rebounds Models
+linReb <- lm(reb ~ player_height + player_weight, data = data1train)
+summary(linReb)
+
+linReb1 <- lm(reb ~ player_height, data = data1train)
+summary(linReb1)
+
+linReb2 <- lm(reb ~ player_weight, data = data1train)
+summary(linReb2)
+
+# Assists Models
+linAst <- lm(ast ~ player_height + player_weight, data = data1train)
+summary(linAst)
+
+linAst1 <- lm(ast ~ player_height, data = data1train)
+summary(linAst1)
+
+linAst2 <- lm(ast ~ player_weight, data = data1train)
+summary(linAst2)
+
+# True Shooting Percentage Models
+linTS <- lm(ts_pct ~ player_height + player_weight, data = data1train)
+summary(linTS)
+
+linTS1 <- lm(ts_pct ~ player_height, data = data1train)
+summary(linTS1)
+
+linTS2 <- lm(ts_pct ~ player_weight, data = data1train)
+summary(linTS2)
+
+# Collinearity, VIF of 3.13 which indivates low corrlation of predictors
+vif(linPts)
+linPts$coefficients
+ptsdf <- data.frame(PtsHeightWeight = linPts$coefficients, 
+                        PtsHeight = c(linPts1$coefficients, NA),
+                        PtsWeight = c(linPts2$coefficients[1], NA, linPts2$coefficients[2]))
+
+ptsTable <- as.table(ptsdf)
+
+ptsTable <- table(PtsHeightWeight = c(linPts$coefficients), 
+                  PtsHeight = c(linPts1$coefficients, NA)
+                  PtsWeight = c(linPts2$coefficients, NA)
+
+ptsTable
+```
+
+
+
+```{r}
+
+```
+
+
+```{r}
+
+```
