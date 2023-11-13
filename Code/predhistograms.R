@@ -1,0 +1,7 @@
+pdf("predhistograms.pdf")
+library(car)
+data1 <- read.csv("all_seasons.csv")
+par(mfrow = c(2,2))
+hist(data1$player_height, data = data1)
+hist(log(data1$player_height), data = data1)
+hist(data1$player_weight, data = data1)

@@ -4,6 +4,7 @@
 \usepackage{setspace}
 \usepackage{booktabs}
 \usepackage{hyperref}
+\usepackage{natbib}
 
 \title{How does Height and Weight Affect NBA Player Performance}
 
@@ -49,10 +50,15 @@ Sports Statistics
 
 Starting with the introduction, the paper will first go into the dataset being used and give a brief summary on the 
 variables in the dataset and where the dataset has been collected located in Section~\ref{sec:data}. Following this
-will be the Methods section, located in Section~\ref{sec:meth}. This is where the general methodology for the paper will be explained.
-The Results section will be next which is where the findings of the research will be found a long with any relevant figures.
-This is located in Section~\ref{sec:resu}. Lastly, the paper will conclude with a Discussion section, in Section~\ref{sec:disc} that restates the aim, conclusions,
-and other important considerations of the paper.
+will be the Methods section, located in Section~\ref{sec:meth}. This is where the general methodology for the paper
+will be explained. The Results section will be next which is where the findings of the research will be found a long 
+with any relevant figures. This is located in Section~\ref{sec:resu}. Lastly, the paper will conclude with a Discussion 
+section, in Section~\ref{sec:disc} that restates the aim, conclusions, and other important considerations of the paper.
+As far as similar research, a study published in the British Journal of Sports Medicine looked at height as a predictor 
+within all sports and found that height and sporting success was highly dependent on the type of sport \citep{tucker2012makes}. 
+Another study done by head researcher Shaoliang Zhang looked at height and weight as a single predictor along with 
+league experience \citep{zhang2017performance}. This paper would build onto that by looking at how player 
+performance is affected by height and weight individually within the sport of basketball.
 
 \section{Data}
 \label{sec:data}
@@ -64,8 +70,21 @@ other variables including height and weight. Specifically, the variables include
 rebounds per game, assists per game, and net rating. The data has been cleaned with no rows of missing data or
 other data quality issues.
 
+Before going into a deeper analysis, it was necessary to prepare the predictor variables to see if they were ready to
+be fit within a linear regression model. To check the normality of both the height and weight variables, histograms
+were produced:
+
+\begin{figure}
+	\caption{Predictor Variable Histograms}
+	\includegraphics[width=1\textwidth]{predhistograms.pdf}
+	\label{fig:predhistograms}
+In figure~\ref{fig:predhistograms}, the plots show the distribution of the predictors height and weight.
+\end{figure}
+
+
 \section{Methods}
 \label{sec:meth}
+
 
 \section{Results}
 \label{sec:resu}
@@ -73,6 +92,7 @@ other data quality issues.
 \section{Discussion}
 \label{sec:disc}
 
-
+\bibliography{references.bib}
+\bibliographystyle{plainnat}
 \end{document}
 	
