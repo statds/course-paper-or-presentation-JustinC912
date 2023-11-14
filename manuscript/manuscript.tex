@@ -4,6 +4,7 @@
 \usepackage{setspace}
 \usepackage{booktabs}
 \usepackage{hyperref}
+\usepackage{float}
 \usepackage{natbib}
 
 \title{How does Height and Weight Affect NBA Player Performance}
@@ -78,21 +79,88 @@ were produced:
 	\caption{Predictor Variable Histograms}
 	\includegraphics[width=1\textwidth]{predhistograms.pdf}
 	\label{fig:predhistograms}
-In figure~\ref{fig:predhistograms}, the plots show the distribution of the predictors height and weight.
+In Figure~\ref{fig:predhistograms}, the plots show the distribution of the predictors height and weight.
 \end{figure}
 
+As shown, the histograms produced seem to be relatively normal, meaning that we can proceed with further analysis
+without having to worry about transforming our predictors in any way.
 
 \section{Methods}
 \label{sec:meth}
 
+Since all of our predictors were seen to be following a normal distribution and all of our predictors seem ready to be fit
+to model, to start, the data will be split into a training and testing dataset. Using a random sampling technique, there 
+will be an 70\% to 30\% split allocated for training and testing, respectively with the seed set to 1 for reproducibility. 
+
+The primary statistical tool used in this study was linear regression, a method chosen for its simplicity and interpretability. 
+Multiple models were constructed to assess the impact of height and weight, both individually and collectively, on 
+various performance metrics such as points scored (pts), rebounds (reb), assists (ast), and true shooting 
+percentage (ts\_pct). Each of these metrics was treated as a dependent variable in separate regression models.
+
+For each performance metric, three models were evaluated:
+
+\begin{enumerate}
+    \item A model considering both height and weight as predictors.
+    \item A model considering only height as a predictor.
+    \item A model considering only weight as a predictor.
+\end{enumerate}
+
+This approach allowed us to isolate the effect of each physical attribute on player performance. Furthermore, to 
+ensure the validity of our models, we checked for multicollinearity, a common issue in regression analyses where 
+predictors are highly correlated. The Variance Inflation Factor (VIF) was calculated for the model including both 
+height and weight as predictors. A VIF of 3.13 indicated low correlation between height and weight, suggesting 
+that multicollinearity would not significantly bias our results.
 
 \section{Results}
 \label{sec:resu}
 
+The regression analysis conducted provided insight into the relationship between NBA players' physical attributes 
+and their performance metrics. Our findings are summarized in the tables below, which present the R-squared 
+and P-value for each of the models considered.
+
+Table~\ref{tab:pts} presents the results for the points scored (pts) models. The R-squared values indicate that 
+both height and weight, when considered together, account for a small portion of the variance in points scored (0.38\%). 
+Individual analyses of height and weight yield even lower R-squared values, suggesting limited predictability of 
+points scored by these variables alone. Notably, the P-values for these models are significantly low, indicating 
+that the models are statistically significant despite the low explanatory power.
+
+In Table~\ref{tab:reb} focusing on rebounds (reb), the model incorporating both height and weight demonstrates 
+an R-squared value of 20.29\%, showing a more substantial relationship with the rebounding ability. The individual 
+analyses of height and weight also reveal significant models, with height having a slightly lower R-squared value 
+than weight.
+
+Assists (ast), as shown in Table~\ref{tab:ast}, have a comparable explanatory power to rebounds when height and 
+weight are considered together, with an R-squared of 19.95\%. The separate analyses for height and weight also 
+reflect substantial explanatory power, albeit lower for weight alone.
+
+Lastly, the true shooting percentage (ts\_pct) models presented in Table~\ref{tab:true} show a low variance explained 
+among the performance metrics, with the highest R-squared value being 0.54\% for the combined height and weight 
+model. However, the P-values indicate statistical significance in these models.
+
+\begin{table}[ht]
+\caption{Points}
+\label{tab:pts}\centering\begin{tabular}{rrrr}  \hline & HeightWeight & Height & Weight \\   \hlineRSquared & 0.0038 & 0.0024 & 0.0004 \\   PValue & 0.0000 & 0.0000 & 0.0721 \\    \hline\end{tabular}\end{table}
+
+\clearpage
+
+\begin{table}[ht]
+\caption{Rebounds}
+\label{tab:reb}\centering\begin{tabular}{rrrr}  \hline & HeightWeight & Height & Weight \\   \hlineRSquared & 0.2029 & 0.1764 & 0.1922 \\   PValue & 0.0000 & 0.0000 & 0.0000 \\    \hline\end{tabular}\end{table}
+
+\begin{table}[ht]
+\caption{Assists}
+\label{tab:ast}\centering\begin{tabular}{rrrr}  \hline & HeightWeight & Height & Weight \\   \hlineRSquared & 0.1995 & 0.1994 & 0.1404 \\   PValue & 0.0000 & 0.0000 & 0.0000 \\    \hline\end{tabular}\end{table}
+
+\begin{table}[ht]
+\caption{True Shooting Percentage}
+\label{tab:ts}\centering\begin{tabular}{rrrr}  \hline & HeightWeight & Height & Weight \\   \hlineRSquared & 0.0054 & 0.0054 & 0.0039 \\   PValue & 0.0003 & 0.0000 & 0.0000 \\    \hline\end{tabular}\end{table}
+
+
+
 \section{Discussion}
 \label{sec:disc}
 
-\bibliography{references.bib}
+\bibliography{references}
 \bibliographystyle{plainnat}
 \end{document}
 	
