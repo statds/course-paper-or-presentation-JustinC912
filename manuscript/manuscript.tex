@@ -75,7 +75,7 @@ Before going into a deeper analysis, it was necessary to prepare the predictor v
 be fit within a linear regression model. To check the normality of both the height and weight variables, histograms
 were produced:
 
-\begin{figure}
+\begin{figure} [h!]
 	\caption{Predictor Variable Histograms}
 	\includegraphics[width=1\textwidth]{predhistograms.pdf}
 	\label{fig:predhistograms}
@@ -118,6 +118,62 @@ The regression analysis conducted provided insight into the relationship between
 and their performance metrics. Our findings are summarized in the tables below, which present the R-squared 
 and P-value for each of the models considered.
 
+\begin{table}[h]
+\caption{Points}
+\label{tab:pts}
+\centering
+\begin{tabular}{rrrr}
+  \hline
+ & HeightWeight & Height & Weight \\ 
+  \hline
+RSquared & 0.0038 & 0.0024 & 0.0004 \\ 
+  PValue & 0.0000 & 0.0000 & 0.0721 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\caption{Rebounds}
+\label{tab:reb}
+\centering
+\begin{tabular}{rrrr}
+  \hline
+ & HeightWeight & Height & Weight \\ 
+  \hline
+RSquared & 0.2029 & 0.1764 & 0.1922 \\ 
+  PValue & 0.0000 & 0.0000 & 0.0000 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\caption{Assists}
+\label{tab:ast}
+\centering
+\begin{tabular}{rrrr}
+  \hline
+ & HeightWeight & Height & Weight \\ 
+  \hline
+RSquared & 0.1995 & 0.1994 & 0.1404 \\ 
+  PValue & 0.0000 & 0.0000 & 0.0000 \\ 
+   \hline
+\end{tabular}
+\end{table}
+ 
+\begin{table}[h!]
+\caption{True Shooting Percentage}
+\label{tab:ts}
+\centering
+\begin{tabular}{rrrr}
+  \hline
+ & HeightWeight & Height & Weight \\ 
+  \hline
+RSquared & 0.0054 & 0.0054 & 0.0039 \\ 
+  PValue & 0.0003 & 0.0000 & 0.0000 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
 Table~\ref{tab:pts} presents the results for the points scored (pts) models. The R-squared values indicate that 
 both height and weight, when considered together, account for a small portion of the variance in points scored (0.38\%). 
 Individual analyses of height and weight yield even lower R-squared values, suggesting limited predictability of 
@@ -137,65 +193,14 @@ Lastly, the true shooting percentage (ts\_pct) models presented in Table~\ref{ta
 among the performance metrics, with the highest R-squared value being 0.54\% for the combined height and weight 
 model. However, the P-values indicate statistical significance in these models.
 
-\begin{table}[ht]
-\caption{Points}
-\label{tab:pts}
-\centering
-\begin{tabular}{rrrr}
-  \hline
- & HeightWeight & Height & Weight \\ 
-  \hline
-RSquared & 0.0038 & 0.0024 & 0.0004 \\ 
-  PValue & 0.0000 & 0.0000 & 0.0721 \\ 
-   \hline
-\end{tabular}
-\end{table}
+Overall, the performance of each of these models are shown below:
 
-\clearpage
-
-\begin{table}[ht]
-\caption{Rebounds}
-\label{tab:reb}
-\centering
-\begin{tabular}{rrrr}
-  \hline
- & HeightWeight & Height & Weight \\ 
-  \hline
-RSquared & 0.2029 & 0.1764 & 0.1922 \\ 
-  PValue & 0.0000 & 0.0000 & 0.0000 \\ 
-   \hline
-\end{tabular}
-\end{table}
-
-\begin{table}[ht]
-\caption{Assists}
-\label{tab:ast}
-\centering
-\begin{tabular}{rrrr}
-  \hline
- & HeightWeight & Height & Weight \\ 
-  \hline
-RSquared & 0.1995 & 0.1994 & 0.1404 \\ 
-  PValue & 0.0000 & 0.0000 & 0.0000 \\ 
-   \hline
-\end{tabular}
-\end{table}
-
-\begin{table}[ht]
-\caption{True Shooting Percentage}
-\label{tab:ts}
-\centering
-\begin{tabular}{rrrr}
-  \hline
- & HeightWeight & Height & Weight \\ 
-  \hline
-RSquared & 0.0054 & 0.0054 & 0.0039 \\ 
-  PValue & 0.0003 & 0.0000 & 0.0000 \\ 
-   \hline
-\end{tabular}
-\end{table}
-
-
+\begin{figure} [h]
+	\caption{Actual vs Predicted Graphs for Best Models}
+	\includegraphics[width=1\textwidth]{actuals_vs_predictedgraphs.pdf}
+	\label{fig:actpred}
+In Figure~\ref{fig:actpred}, the plots show the actuals vs predicted values with a green reference line and red line representing the model.
+\end{figure}
 
 \section{Discussion}
 \label{sec:disc}
@@ -222,6 +227,6 @@ Lastly, comparative studies across different sports or different eras in basketb
 physical attributes in athletic performance.
 
 \bibliography{references}
-\bibliographystyle{plainnat}
+\bibliographystyle{plain}
 \end{document}
 	

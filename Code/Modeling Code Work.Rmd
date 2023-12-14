@@ -20,6 +20,8 @@ data1train <- data1[ind, ]
 data1test <- data1[-ind, ]
 
 # Points Models
+
+#Best Model
 linPts <- lm(pts ~ player_height + player_weight, data = data1train)
 summary(linPts)
 
@@ -30,6 +32,8 @@ linPts2 <- lm(pts ~ player_weight, data = data1train)
 summary(linPts2)
 
 # Rebounds Models
+
+# Best Model
 linReb <- lm(reb ~ player_height + player_weight, data = data1train)
 summary(linReb)
 
@@ -43,6 +47,7 @@ summary(linReb2)
 linAst <- lm(ast ~ player_height + player_weight, data = data1train)
 summary(linAst)
 
+#Best Model
 linAst1 <- lm(ast ~ player_height, data = data1train)
 summary(linAst1)
 
@@ -53,6 +58,7 @@ summary(linAst2)
 linTS <- lm(ts_pct ~ player_height + player_weight, data = data1train)
 summary(linTS)
 
+# Best Model
 linTS1 <- lm(ts_pct ~ player_height, data = data1train)
 summary(linTS1)
 
@@ -73,6 +79,36 @@ ptsTable <- table(PtsHeightWeight = c(linPts$coefficients),
                   PtsWeight = c(linPts2$coefficients, NA)
 
 ptsTable
+
+# Graphs
+par(mfrow = c(2,2))
+# Points Graph
+predictions <- predict(linPts, data1train)
+plot(data1train$pts, predictions, xlab = "Actual", ylab = "Predicted", 
+     main = "Actual vs Predicted Points", col = "black", pch = 16)
+abline(lm(predictions ~ data1train$pts), col = "red")
+abline(0, 1, col = "green", lty = 2)
+
+# Rebounds Graph
+predictions <- predict(linReb, data1train)
+plot(data1train$reb, predictions, xlab = "Actual", ylab = "Predicted", 
+     main = "Actual vs Predicted Rebounds", col = "black", pch = 16)
+abline(lm(predictions ~ data1train$reb), col = "red")
+abline(0, 1, col = "green", lty = 2)
+
+# Assists Graph
+predictions <- predict(linAst1, data1train)
+plot(data1train$ast, predictions, xlab = "Actual", ylab = "Predicted", 
+     main = "Actual vs Predicted Assists", col = "black", pch = 16)
+abline(lm(predictions ~ data1train$ast), col = "red")
+abline(0, 1, col = "green", lty = 2)
+
+# True Shooting Graph
+predictions <- predict(linTS1, data1train)
+plot(data1train$ts_pct, predictions, xlab = "Actual", ylab = "Predicted", 
+     main = "Actual vs Predicted True Shooting", col = "black", pch = 16)
+abline(lm(predictions ~ data1train$ts_pct), col = "red")
+abline(0, 1, col = "green", lty = 2)
 ```
 
 
